@@ -14,7 +14,7 @@ const dbConfig: DataSourceOptions = {
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/migrations/*{.ts,.js}'],
   logging: false,
-  synchronize: true,
+  synchronize: false,
   dropSchema: false,
 };
 
