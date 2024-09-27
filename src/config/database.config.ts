@@ -1,17 +1,19 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from './envs';
+import { DATABASE_URL } from './envs';
 
 const dbConfig: DataSourceOptions = {
   type: 'postgres',
-  database: DB_NAME,
-  host: DB_HOST,
-  port: +DB_PORT,
-  username: DB_USERNAME,
-  password: DB_PASSWORD,
+  url: DATABASE_URL, // Usar la variable DATABASE_URL directamente
+  // Si decides usar las variables individuales en lugar de DATABASE_URL
+  // database: process.env.DB_NAME,
+  // host: process.env.DB_HOST,
+  // port: +process.env.DB_PORT,
+  // username: process.env.DB_USERNAME,
+  // password: process.env.DB_PASSWORD,
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/migrations/*{.ts,.js}'],
-  logging: false,
+  logging: true,
   synchronize: false,
   dropSchema: false,
 };
